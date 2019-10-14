@@ -35,3 +35,7 @@ C:\Users\Constantine\Desktop\GUFOS_BackEnd\obj\Debug\netcoreapp3.0\GUFOS_BackEnd
 C:\Users\Constantine\Desktop\GUFOS_BackEnd\obj\Debug\netcoreapp3.0\GUFOS_BackEnd.csproj.CopyComplete
 C:\Users\Constantine\Desktop\GUFOS_BackEnd\obj\Debug\netcoreapp3.0\GUFOS_BackEnd.dll
 C:\Users\Constantine\Desktop\GUFOS_BackEnd\obj\Debug\netcoreapp3.0\GUFOS_BackEnd.pdb
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll

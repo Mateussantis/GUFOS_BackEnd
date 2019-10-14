@@ -263,8 +263,40 @@ https://localhost:5001/api/categoria
 <br>
 
 ### LocalizacaoController
-Copiar ControllerCategoria e alterar com **CTRL + F**
+> Copiar ControllerCategoria e alterar com **CTRL + F**
 > Testar os métodos REST
+
+<br>
+
+### EventoController
+> Copiar ControllerCategoria e alterar com **CTRL + F**
+> Testar os métodos REST
+> Notamos que no método **GET** não retorna a árvore de objetos *Categoria* e *Localizacao*
+> Para incluirmos é necessário adicionar em nosso projeto o seguinte pacote:
+```bash
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
+```
+> Depois em nossa Startup.cs, dentro de ConfigureServices, no lugar de *services.AddControllers()* :
+```c#
+services.AddControllersWithViews().AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+```
+> Damos **CTRL + .** para incluir a dependência:
+```c#
+using Newtonsoft.Json;
+```
+> Após isso precisamos mudar nosso controller para receber os atributos, no método GET ficará assim:
+```c#
+var eventos = await _context.Evento.Include(c => c.Categoria).Include(l => l.Localizacao).ToListAsync();
+```
+> No método GET com parâmetro ficará assim:
+```c#
+var evento = await _context.Evento.Include(c => c.Categoria).Include(l => l.Localizacao).FirstOrDefaultAsync(e => e.EventoId == id);
+```
+
+
+
+
+
 
 
 
