@@ -1,4 +1,4 @@
-# GUFOS - Agenda de Eventos - BackEnd C#
+# GUFOS - Agenda de Eventos - BackEnd C# - .Net Core 3.0
 
 ## Criação do Projeto
 > Criamos nosso projeto de API com: 
@@ -50,19 +50,37 @@ dotnet ef
 ```bash
 dotnet ef dbcontext scaffold "Server=DESKTOP-XVGT587\SQLEXPRESS;Database=Gufos;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -d
 ```
+<br>
 
 ## Controllers
 
 > Criamos nosso primeiro Controller: CategoriaController
 > Herdamos nosso novo controller de ControllerBase
 > Definimos a "rota" da API logo em cima do nome da classe, utilizando:
-- [Route("api/[controller]")]
+```c#
+[Route("api/[controller]")]
+```
 > Logo abaixo dizemos que é um controller de API, utilizando:
-- [ApiController]
+```c#
+[ApiController]
+```
 <br>
 
 > Damos **CTRL + .** para incluir:
 
-```bash
+```c#
 using Microsoft.AspNetCore.Mvc;
 ```
+<br>
+
+> Instanciamos nosso contexto da nossa Base de Dados:
+```c#
+GufosContext _contexto = new GufosContext();
+```
+
+> Importamos nosso using de nossos Models:
+```c#
+using GUFOS_BackEnd.Models;
+```
+
+
