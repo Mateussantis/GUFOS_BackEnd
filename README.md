@@ -157,6 +157,34 @@ https://localhost:5001/api/categoria
 
 <br>
 
+> Criamos nosso método POST para inserir uma nova categoria:
+```c#
+        // POST: api/Categoria/
+        [HttpPost]
+        public async Task<ActionResult<Categoria>> Post(Categoria categoria)
+        {
+            try
+            {
+                await _context.AddAsync(categoria);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+
+            return categoria;
+        }
+```
+> Testamos no Postman, passando em RAW , do tipo JSON:
+```json
+{
+    "titulo": "Teste"
+}
+```
+
+<br>
+
 > Criamos nosso método PUT para atualizar os dados:
 ```c#
         // PUT: api/Categoria/5
@@ -190,6 +218,43 @@ https://localhost:5001/api/categoria
 
             return NoContent();
         }
+```
+> Testamos no Postman, no método PUT, pela URL [https://localhost:5001/api/categoria/4](https://localhost:5001/api/categoria/4) passando:
+```json
+{
+    "categoriaId": 4,
+    "titulo": "Design Gráfico"
+}
+```
+
+<br>
+
+> Por último, incluímos nosso método DELETE , para excluir uma determinada Categoria:
+```c#
+        // DELETE: api/Categoria/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Categoria>> Delete(int id)
+        {
+            var categoria = await _context.Categoria.FindAsync(id);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+
+            _context.Categoria.Remove(categoria);
+            await _context.SaveChangesAsync();
+
+            return categoria;
+        }
+```
+> Testamos pelo Postman, pelo mérodo DELETE, e com a URL: [https://localhost:5001/api/categoria/4](https://localhost:5001/api/categoria/4)
+> Deve-se retornar o objeto excluído:
+```json
+{
+    "categoriaId": 4,
+    "titulo": "Design Gráfico",
+    "evento": []
+}
 ```
 
 
