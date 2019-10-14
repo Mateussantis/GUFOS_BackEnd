@@ -54,6 +54,7 @@ dotnet ef dbcontext scaffold "Server=DESKTOP-XVGT587\SQLEXPRESS;Database=Gufos;T
 
 ## Controllers
 
+> Apagamos o controller que já vem com a base...
 > Criamos nosso primeiro Controller: CategoriaController
 > Herdamos nosso novo controller de ControllerBase
 > Definimos a "rota" da API logo em cima do nome da classe, utilizando:
@@ -83,7 +84,7 @@ GufosContext _contexto = new GufosContext();
 using GUFOS_BackEnd.Models;
 ```
 
-> Criamos nosso método GET:
+> Criamos nosso método **GET**:
 ```c#
         // GET: api/Categoria/
         [HttpGet]
@@ -137,7 +138,7 @@ https://localhost:5001/api/categoria
 
 <br>
 
-> Criamos nossa sobrecarga de método GET, desta vez passando como parâmetro o ID:
+> Criamos nossa sobrecarga de método **GET**, desta vez passando como parâmetro o ID:
 ```c#
         // GET: api/Categoria/5
         [HttpGet("{id}")]
@@ -157,7 +158,7 @@ https://localhost:5001/api/categoria
 
 <br>
 
-> Criamos nosso método POST para inserir uma nova categoria:
+> Criamos nosso método **POST** para inserir uma nova categoria:
 ```c#
         // POST: api/Categoria/
         [HttpPost]
@@ -185,7 +186,7 @@ https://localhost:5001/api/categoria
 
 <br>
 
-> Criamos nosso método PUT para atualizar os dados:
+> Criamos nosso método **PUT** para atualizar os dados:
 ```c#
         // PUT: api/Categoria/5
         [HttpPut("{id}")]
@@ -229,7 +230,7 @@ https://localhost:5001/api/categoria
 
 <br>
 
-> Por último, incluímos nosso método DELETE , para excluir uma determinada Categoria:
+> Por último, incluímos nosso método **DELETE** , para excluir uma determinada Categoria:
 ```c#
         // DELETE: api/Categoria/5
         [HttpDelete("{id}")]
