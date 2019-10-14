@@ -106,5 +106,33 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 ```
+<br>
+
+> Testamos o método GET de nosso controller no Postman:
+```bash
+dotnet run
+https://localhost:5001/api/categoria
+```
+
+> Deve ser retornado:
+```json
+[
+    {
+        "categoriaId": 1,
+        "titulo": "Desenvolvimento",
+        "evento": []
+    },
+    {
+        "categoriaId": 2,
+        "titulo": "HTML + CSS",
+        "evento": []
+    },
+    {
+        "categoriaId": 3,
+        "titulo": "Marketing",
+        "evento": []
+    }
+]
+```
 
 
