@@ -78,9 +78,33 @@ using Microsoft.AspNetCore.Mvc;
 GufosContext _contexto = new GufosContext();
 ```
 
-> Importamos nosso using de nossos Models:
+> Damos **CTRL + .** para incluir nossos models:
 ```c#
 using GUFOS_BackEnd.Models;
+```
+
+> Criamos nosso método GET:
+```c#
+        // GET: api/Categoria/
+        [HttpGet]
+        public async Task<ActionResult<List<Categoria>>> Get()
+        {
+            var categorias = await _context.Categoria.ToListAsync();
+
+            if (categorias == null)
+            {
+                return NotFound();
+            }
+
+            return categorias;
+        }
+```
+
+> Importamos com CTRL + . as dependências:
+```c#
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 ```
 
 
