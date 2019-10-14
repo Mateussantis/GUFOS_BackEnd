@@ -45,3 +45,17 @@ dotnet ef
 ```bash
 dotnet ef dbcontext scaffold "Server=DESKTOP-XVGT587\SQLEXPRESS;Database=Gufos;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -d
 ```
+
+## Controllers
+
+> Criamos nosso primeiro Controller: CategoriaController
+> Herdamos nosso novo controller de ControllerBase
+> Definimos a "rota" da API logo em cima do nome da classe, utilizando:
+- [Route("api/[controller]")]
+> Logo abaixo dizemos que é um controller de API, utilizando:
+- [ApiController]
+<br>
+> Damos **CTRL + .** para incluir:
+```
+using Microsoft.AspNetCore.Mvc;
+```
