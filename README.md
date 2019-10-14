@@ -1,5 +1,10 @@
 # GUFOS - Agenda de Eventos - BackEnd C# - .Net Core 3.0
 
+## Requisitos
+> - Visual Studio Code <br>
+> - Banco de Dados funcionando - DDLs, DMLs e DQLs <br>
+> - .NET Core SDK 3.0
+
 ## Criação do Projeto
 > Criamos nosso projeto de API com: 
 ```bash
