@@ -135,4 +135,64 @@ https://localhost:5001/api/categoria
 ]
 ```
 
+<br>
+
+> Criamos nossa sobrecarga de método GET, desta vez passando como parâmetro o ID:
+```c#
+        // GET: api/Categoria/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Categoria>> Get(int id)
+        {
+            var categoria = await _context.Categoria.FindAsync(id);
+
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+
+            return categoria;
+        }
+```
+> Testamos no Postman: [https://localhost:5001/api/categoria/1](https://localhost:5001/api/categoria/1)
+
+<br>
+
+> Criamos nosso método PUT para atualizar os dados:
+```c#
+        // PUT: api/Categoria/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(long id, Categoria categoria)
+        {
+            if (id != categoria.CategoriaId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(categoria).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                var categoria_valido = await _context.Categoria.FindAsync(id);
+
+                if (categoria_valido == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+```
+
+
+
+
 
