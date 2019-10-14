@@ -1,9 +1,9 @@
 # GUFOS - Agenda de Eventos - BackEnd C#
 
 ## Criação do Projeto
--- Criamos nosso projeto com: 
+-- Criamos nosso projeto de API com: 
 ```bash
-dotnet new console
+dotnet new webapi
 ```
 
 ## Entity Framework - Database First
