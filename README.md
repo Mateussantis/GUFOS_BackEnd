@@ -57,8 +57,8 @@ dotnet ef dbcontext scaffold "Server=DESKTOP-XVGT587\SQLEXPRESS;Database=Gufos;T
 
 ### CategoriaController
 
-> Criamos nosso primeiro Controller: CategoriaController
-> Herdamos nosso novo controller de ControllerBase
+> Criamos nosso primeiro Controller: CategoriaController <br>
+> Herdamos nosso novo controller de ControllerBase <br>
 > Definimos a "rota" da API logo em cima do nome da classe, utilizando:
 ```c#
 [Route("api/[controller]")]
@@ -250,7 +250,7 @@ https://localhost:5001/api/categoria
             return categoria;
         }
 ```
-> Testamos pelo Postman, pelo mérodo DELETE, e com a URL: [https://localhost:5001/api/categoria/4](https://localhost:5001/api/categoria/4)
+> Testamos pelo Postman, pelo mérodo DELETE, e com a URL: [https://localhost:5001/api/categoria/4](https://localhost:5001/api/categoria/4) <br>
 > Deve-se retornar o objeto excluído:
 ```json
 {
@@ -263,7 +263,7 @@ https://localhost:5001/api/categoria
 <br>
 
 ### LocalizacaoController
-> Copiar ControllerCategoria e alterar com **CTRL + F**
+> Copiar ControllerCategoria e alterar com **CTRL + F** <br>
 > Testar os métodos REST
 
 <br>
