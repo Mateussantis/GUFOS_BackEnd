@@ -264,6 +264,7 @@ https://localhost:5001/api/categoria
 
 ### LocalizacaoController
 Copiar ControllerCategoria e alterar com **CTRL + F**
+> Testar os métodos REST
 
 
 
