@@ -56,6 +56,6 @@ dotnet ef dbcontext scaffold "Server=DESKTOP-XVGT587\SQLEXPRESS;Database=Gufos;T
 - [ApiController]
 <br>
 > Damos **CTRL + .** para incluir:
-```
+```bash
 using Microsoft.AspNetCore.Mvc;
 ```
