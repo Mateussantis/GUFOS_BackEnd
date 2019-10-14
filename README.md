@@ -269,9 +269,9 @@ https://localhost:5001/api/categoria
 <br>
 
 ### EventoController
-> Copiar ControllerCategoria e alterar com **CTRL + F**
-> Testar os métodos REST
-> Notamos que no método **GET** não retorna a árvore de objetos *Categoria* e *Localizacao*
+> Copiar ControllerCategoria e alterar com **CTRL + F** <br>
+> Testar os métodos REST <br>
+> Notamos que no método **GET** não retorna a árvore de objetos *Categoria* e *Localizacao* <br>
 > Para incluirmos é necessário adicionar em nosso projeto o seguinte pacote:
 ```bash
 dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
