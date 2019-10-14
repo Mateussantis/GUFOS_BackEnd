@@ -5,7 +5,7 @@
 ```bash
 dotnet new webapi
 ```
-<br><br>
+<br>
 
 ## Entity Framework - Database First
 
@@ -14,31 +14,36 @@ dotnet new webapi
 dotnet tool install --global dotnet-ef
 ```
 
-<br><br>
+<br>
+
 > Baixar Pacote SQL Server:
 ```bash
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
-<br><br>
+<br>
+
 > Baixar pacote de escrita de códigos do EF:
 ```bash
 dotnet add package Microsoft.EntityFrameworkCore.Design
 ```
 
-<br><br>
+<br>
+
 > Dar um restore na aplicação para ler e aplicar os pacotes instalados:
 ```bash
 dotnet restore
 ```
 
-<br><br>
+<br>
+
 > Testar se o EF está ok
 ```bash
 dotnet ef
 ```
 
-<br><br>
+<br>
+
 > Criar os Models à partir da sua base de Dados
     :point_right: -o = criar o diretorio caso não exista
     :point_right: -d = Incluir as DataNotations do banco
@@ -55,7 +60,9 @@ dotnet ef dbcontext scaffold "Server=DESKTOP-XVGT587\SQLEXPRESS;Database=Gufos;T
 > Logo abaixo dizemos que é um controller de API, utilizando:
 - [ApiController]
 <br>
+
 > Damos **CTRL + .** para incluir:
+
 ```bash
 using Microsoft.AspNetCore.Mvc;
 ```
