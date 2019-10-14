@@ -293,6 +293,10 @@ var eventos = await _context.Evento.Include(c => c.Categoria).Include(l => l.Loc
 var evento = await _context.Evento.Include(c => c.Categoria).Include(l => l.Localizacao).FirstOrDefaultAsync(e => e.EventoId == id);
 ```
 
+<br>
+
+> Adicionar os Controllers restantes
+
 
 
 
