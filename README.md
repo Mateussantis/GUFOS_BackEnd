@@ -53,8 +53,9 @@ dotnet ef dbcontext scaffold "Server=DESKTOP-XVGT587\SQLEXPRESS;Database=Gufos;T
 <br>
 
 ## Controllers
-
 > Apagamos o controller que já vem com a base...
+
+### LocalizacaoController
 > Criamos nosso primeiro Controller: CategoriaController
 > Herdamos nosso novo controller de ControllerBase
 > Definimos a "rota" da API logo em cima do nome da classe, utilizando:
@@ -258,7 +259,10 @@ https://localhost:5001/api/categoria
 }
 ```
 
+<br>
 
+### LocalizacaoController
+Copiar ControllerCategoria e alterar com **CTRL + F**
 
 
 
