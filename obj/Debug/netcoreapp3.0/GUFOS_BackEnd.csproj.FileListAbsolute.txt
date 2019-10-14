@@ -39,3 +39,12 @@ C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.Asp
 C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
 C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\GUFOS_BackEnd.xml
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.OpenApi.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\obj\Debug\netcoreapp3.0\GUFOS_BackEnd.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\obj\Debug\netcoreapp3.0\GUFOS_BackEnd.xml

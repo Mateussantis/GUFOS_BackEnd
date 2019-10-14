@@ -297,7 +297,63 @@ var evento = await _context.Evento.Include(c => c.Categoria).Include(l => l.Loca
 
 > Adicionar os Controllers restantes
 
+<br><br>
 
+## SWAGGER - Documentação da API
+
+>  Instalar o Swagger:
+```bash
+dotnet add Gufos_BackEnd.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc4
+```
+<br>
+
+> Registramos o gerador do Swagger dentro de ConfigureServices, definindo 1 ou mais documentos do Swagger:
+```c#
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+                // Mostrar o caminho dos comentários dos métodos Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+```
+
+<br>
+
+> Colocar na Startup com **CTRL + .**
+```c#
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.IO;
+```
+
+<br>
+
+> Colocar dentro do csproj para gerar a documentação com base nos comentários dos métodos:
+```c#
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+```
+
+<br>
+
+> Em Startup.cs , no método Configure, habilite o middleware para atender ao documento JSON gerado e à interface do usuário do Swagger:
+```c#
+            // Habilitamos efetivamente o Swagger em nossa aplicação.
+            app.UseSwagger();
+            // Especificamos o endpoint da documentação
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+            });
+```
+
+<br>
+
+> Rodar a aplicação e testar em: [https://localhost:5001/swagger/](https://localhost:5001/swagger/)
 
 
 
