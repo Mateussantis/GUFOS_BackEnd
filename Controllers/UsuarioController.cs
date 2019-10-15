@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GUFOS_BackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ namespace GUFOS_BackEnd.Controllers
 
         // GET: api/Usuario/
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<List<Usuario>>> Get()
         {
             var usuarios = await _context.Usuario.Include(t => t.TipoUsuario).ToListAsync();
@@ -29,6 +31,7 @@ namespace GUFOS_BackEnd.Controllers
 
         // GET: api/Usuario/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Usuario>> Get(int id)
         {
             var usuario = await _context.Usuario.Include(t => t.TipoUsuario).FirstOrDefaultAsync(e => e.UsuarioId == id);
@@ -43,6 +46,7 @@ namespace GUFOS_BackEnd.Controllers
 
         // POST: api/Usuario/
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Usuario>> Post(Usuario usuario)
         {
             try
@@ -61,6 +65,7 @@ namespace GUFOS_BackEnd.Controllers
 
         // PUT: api/Usuario/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> Put(long id, Usuario usuario)
         {
             if (id != usuario.UsuarioId)
@@ -93,6 +98,7 @@ namespace GUFOS_BackEnd.Controllers
 
         // DELETE: api/Usuario/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<Usuario>> Delete(int id)
         {
             var usuario = await _context.Usuario.FindAsync(id);

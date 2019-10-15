@@ -360,7 +360,197 @@ using System.IO;
 
 > Rodar a aplicação e testar em: [https://localhost:5001/swagger/](https://localhost:5001/swagger/)
 
+<br>
 
+## JWT - Autenticação com Json Web Token
+
+> Instalar pacote JWT
+```bash
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 3.0.0
+```
+<br>
+
+> Adicionar a configuração do nosso Serviço de autenticação:
+```c#
+            // JWT
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)  
+            .AddJwtBearer(options =>  
+            {  
+                options.TokenValidationParameters = new TokenValidationParameters  
+                {  
+                    ValidateIssuer = true,  
+                    ValidateAudience = true,  
+                    ValidateLifetime = true,  
+                    ValidateIssuerSigningKey = true,  
+                    ValidIssuer = Configuration["Jwt:Issuer"],  
+                    ValidAudience = Configuration["Jwt:Issuer"],  
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))  
+                };  
+            });
+```
+
+> Importar com **CTRL + .** as dependências:
+```c#
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+```
+
+<br>
+
+> Adicionamos em nosso *appsettings.json* :
+```json
+{
+  "Jwt": {  
+    "Key": "GufosSecretKey",  
+    "Issuer": "gufos.com"  
+  },
+}  
+```
+
+<br>
+
+> Em Startup.cs , no método Configure , usamos efetivamente a autenticação:
+```c#
+app.UseAuthentication();
+``` 
+
+<br><br>
+
+> Criamos o Controller *LoginController* e herdamos da *ControllerBase* <br>
+> Colocamos a rota da API e dizemos que é um controller de API :
+```c#
+    [Route("api/[controller]")]  
+    [ApiController] 
+    public class LoginController : ControllerBase
+    {
+        
+    }
+```
+<br>
+
+> Criamos nossos métodos:
+```c#
+        // Chamamos nosso contexto do banco
+        GufosContext _context = new GufosContext();
+
+        // Definimos uma variável para percorrer nossos métodos com as configurações obtidas no appsettings.json
+        private IConfiguration _config;  
+
+        // Definimos um método construtor para poder passar essas configs
+        public LoginController(IConfiguration config)  
+        {  
+            _config = config;  
+        }
+
+        // Chamamos nosso método para validar nosso usuário da aplicação
+        private Usuario AuthenticateUser(Usuario login)  
+        {  
+            var usuario =  _context.Usuario.FirstOrDefault(u => u.Email == login.Email && u.Senha == login.Senha);
+  
+            if (usuario != null)  
+            {  
+                usuario = login;  
+            }  
+
+            return usuario;  
+        }  
+
+        // Criamos nosso método que vai gerar nosso Token
+        private string GenerateJSONWebToken(Usuario userInfo)  
+        {  
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));  
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            // Definimos nossas Claims (dados da sessão) para poderem ser capturadas
+            // a qualquer momento enquanto o Token for ativo
+            var claims = new[] {  
+                new Claim(JwtRegisteredClaimNames.NameId, userInfo.Nome),  
+                new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),  
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())  
+            }; 
+
+            // Configuramos nosso Token e seu tempo de vida
+            var token = new JwtSecurityToken(_config["Jwt:Issuer"],  
+              _config["Jwt:Issuer"],  
+              claims,  
+              expires: DateTime.Now.AddMinutes(120),  
+              signingCredentials: credentials);  
+  
+            return new JwtSecurityTokenHandler().WriteToken(token);  
+        }  
+  
+
+        
+        // Usamos essa anotação para ignorar a autenticação neste método, já que é ele quem fará isso  
+        [AllowAnonymous]  
+        [HttpPost]  
+        public IActionResult Login([FromBody]Usuario login)  
+        {  
+            IActionResult response = Unauthorized();  
+            var user = AuthenticateUser(login);  
+  
+            if (user != null)  
+            {  
+                var tokenString = GenerateJSONWebToken(user);  
+                response = Ok(new { token = tokenString });  
+            }  
+  
+            return response;  
+        }
+```
+
+> Importamos as dependências:
+```c#
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Text;
+using GUFOS_BackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+```
+<br>
+
+> Testamos se está sendo gerado nosso Token pelo Postman, no método POST <br>
+> Pela URL : [https://localhost:5001/api/login](https://localhost:5001/api/login) <br>
+> E com os seguintes parâmetros pela RAW : 
+```json
+{
+	"Nome" : "Administrador", 
+	"Email": "adm@adm.com",
+    "Senha": "123",
+    "Tipo_usuario_id" : 1
+}
+```
+
+> O retorno deve ser algo do tipo:
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJQYXVsbyIsImVtYWlsIjoiYWRtQGFkbS5jb20iLCJqdGkiOiIwYjNmMGM3ZC1mMDhjLTQ4NDQtOTI1Mi04ZDI1ZTZmY2MxYmYiLCJleHAiOjE1NzExNTcyMjUsImlzcyI6Imd1Zm9zLmNvbSIsImF1ZCI6Imd1Zm9zLmNvbSJ9.bk_cvQJgVpq7TXa8Nhh1XzWAEUnTXHc2lP5vvqIVhJs"
+}
+```
+
+> Após confirmar, vamos até [https://jwt.io/](https://jwt.io/) <br>
+> Colamos nosso Token lá e em Payload devemos ter os seguintes dados:
+```json
+{
+  "nameid": "Administrador",
+  "email": "adm@adm.com",
+  "jti": "d1e13b73-5f8f-423c-97e2-835f55bbfb0e",
+  "exp": 1571157573,
+  "iss": "gufos.com",
+  "aud": "gufos.com"
+}
+```
+
+<br><br>
+
+> Pronto! Agora é só utilizar a anotação *[Authorize]* em baixo da anotação REST de cada método que desejar colocar autenticação! <br>
+> No Postman devemos gerar um token pela rota de login e nos demais endpoints devemos adicionar o token gerado na aba *Authorization* <br>
+> Escolhendo a opção ***Baerer Token**
 
 
 

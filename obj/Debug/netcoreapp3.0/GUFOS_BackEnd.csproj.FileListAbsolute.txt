@@ -48,3 +48,10 @@ C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Swashbuckle.A
 C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Constantine\Desktop\GUFOS_BackEnd\obj\Debug\netcoreapp3.0\GUFOS_BackEnd.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Constantine\Desktop\GUFOS_BackEnd\obj\Debug\netcoreapp3.0\GUFOS_BackEnd.xml
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Constantine\Desktop\GUFOS_BackEnd\bin\Debug\netcoreapp3.0\System.IdentityModel.Tokens.Jwt.dll
