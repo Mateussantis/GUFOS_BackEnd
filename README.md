@@ -519,10 +519,9 @@ using Microsoft.IdentityModel.Tokens;
 > E com os seguintes parâmetros pela RAW : 
 ```json
 {
-	"Nome" : "Administrador", 
-	"Email": "adm@adm.com",
-    "Senha": "123",
-    "Tipo_usuario_id" : 1
+    "nome": "Administrador",
+    "email": "adm@adm.com",
+    "senha": "123",
 }
 ```
 
