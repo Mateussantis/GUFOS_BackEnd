@@ -548,8 +548,7 @@ using Microsoft.IdentityModel.Tokens;
 <br><br>
 
 > Pronto! Agora é só utilizar a anotação *[Authorize]* em baixo da anotação REST de cada método que desejar colocar autenticação! <br>
-> No Postman devemos gerar um token pela rota de login e nos demais endpoints devemos adicionar o token gerado na aba *Authorization* <br>
-> Escolhendo a opção ***Baerer Token**
+> No Postman devemos gerar um token pela rota de login e nos demais endpoints devemos adicionar o token gerado na aba *Authorization*  escolhendo a opção ***Baerer Token***
 
 
 
